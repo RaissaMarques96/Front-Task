@@ -1,4 +1,4 @@
-// import MultilineTextFields from "../componentes/multiline"
+import SimplePaper from "../componentes/login"
 
 
 
@@ -6,10 +6,8 @@
 function Login() {
     return (
   
-      <div>
-        <h1>
-          óla sou pedro
-        </h1>
+      <div style={{background: 'linear-gradient(135deg, #0D47A1 0%, #000000 100%)',}}>
+        <SimplePaper/>
       </div>
   
       

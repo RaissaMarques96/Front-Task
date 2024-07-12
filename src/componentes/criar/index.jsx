@@ -5,15 +5,18 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom'; 
 
-export default function LoginCard() {
+export default function SignupCard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const password = data.get('password');
+    const name = data.get('name');
+    const birthDate = data.get('birthDate');
     console.log('Email:', email);
     console.log('Password:', password);
-  
+    console.log('Name:', name);
+    console.log('Birth Date:', birthDate);
   };
 
   return (
@@ -56,6 +59,28 @@ export default function LoginCard() {
             InputLabelProps={{ style: { color: 'white' } }}
             InputProps={{ style: { color: 'white' } }}
           />
+          <TextField
+            name="name"
+            label="Nome"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{ style: { color: 'white' } }}
+            InputProps={{ style: { color: 'white' } }}
+          />
+          <TextField
+            name="birthDate"
+            label="Data de Nascimento"
+            type="date"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+              style: { color: 'white' }
+            }}
+            InputProps={{ style: { color: 'white' } }}
+          />
           <Button
             type="submit"
             variant="contained"
@@ -63,13 +88,13 @@ export default function LoginCard() {
             fullWidth
             sx={{ mt: 2 }}
           >
-            Login
+            Criar Conta
           </Button>
         </form>
         <Box sx={{ mt: 2 }}>
-          <Link to="/signup" style={{ textDecoration: 'none' }}>
+          <Link to="/login" style={{ textDecoration: 'none' }}>
             <Button variant="outlined" fullWidth sx={{ color: 'white', borderColor: 'white' }}>
-              Criar Conta
+              Voltar para Login
             </Button>
           </Link>
         </Box>

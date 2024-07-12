@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const card = (navigate) => (
   <React.Fragment>
-    <CardContent sx={{ display: 'flex', flexDirection: 'column', textAlign: 'center', marginTop: 15 }}>
+    <CardContent sx={{ display: 'flex', flexDirection: 'column', textAlign: 'center', marginTop: 15,background: 'linear-gradient(135deg, #0D47A1 0%, #000000 100%)', }}>
       <Typography
         component="div"
         sx={{

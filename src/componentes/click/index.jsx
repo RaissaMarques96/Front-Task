@@ -13,23 +13,36 @@ export default function FloatingActionButtons() {
   };
 
   const handleAddTask = () => {
-    // Lógica para adicionar a task
     console.log('Adicionar Task');
   };
 
   return (
-    <Box sx={{ '& > :not(style)': { m: 1 }, marginLeft: '75rem', position: 'fixed' }}>
+    <Box sx={{ '& > :not(style)': { m: 1 }, position: 'fixed', bottom: '16px', right: '16px' }}>
       {showAddTaskButton && (
         <Fab
           color="secondary"
           aria-label="add-task"
-          sx={{ position: 'absolute', bottom: '70px' }} // Ajuste a posição conforme necessário
+          sx={{
+            position: 'absolute',
+            bottom: '70px',
+            right: '0',
+            background: 'linear-gradient(135deg, #3f51b5 0%, #9c27b0 100%)',
+            color: 'white',
+          }}
           onClick={handleAddTask}
         >
-          <Button variant="contained">Adicionar Task</Button>
+          <Button variant="contained" sx={{ background: 'linear-gradient(135deg, #3f51b5 0%, #9c27b0 100%)', color: 'white' }}>Adicionar Task</Button>
         </Fab>
       )}
-      <Fab color="primary" aria-label="add" onClick={handleClick}>
+      <Fab
+        color="primary"
+        aria-label="add"
+        onClick={handleClick}
+        sx={{
+          background: 'linear-gradient(135deg, #3f51b5 0%, #9c27b0 100%)',
+          color: 'white',
+        }}
+      >
         <AddIcon />
       </Fab>
     </Box>

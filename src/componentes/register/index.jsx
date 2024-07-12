@@ -11,23 +11,32 @@ export default function SimplePaper() {
     const data = new FormData(event.currentTarget);
     const taskName = data.get('taskName');
     const endDate = data.get('endDate');
+    const description = data.get('description');
     console.log('Task Name:', taskName);
     console.log('End Date:', endDate);
+    console.log('Description:', description);
   };
 
   return (
     <Box
       sx={{
         display: 'flex',
-        flexWrap: 'wrap',
-        '& > :not(style)': {
-          m: 1,
-          width: 300,  // Aumentei a largura para acomodar o formulário
-          padding: 2,  // Adicionei padding para melhorar o layout
-        },
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#f0f4f8', // Cor de fundo da página
       }}
     >
-      <Paper elevation={3}>
+      <Paper
+        elevation={3}
+        sx={{
+          m: 1,
+          width: 300,
+          padding: 2,
+          background: 'linear-gradient(135deg, #3f51b5 0%, #9c27b0 100%)',
+          color: 'white',
+        }}
+      >
         <form onSubmit={handleSubmit}>
           <TextField
             name="taskName"
@@ -35,6 +44,8 @@ export default function SimplePaper() {
             variant="outlined"
             fullWidth
             margin="normal"
+            InputLabelProps={{ style: { color: 'white' } }}
+            InputProps={{ style: { color: 'white' } }}
           />
           <TextField
             name="endDate"
@@ -45,9 +56,22 @@ export default function SimplePaper() {
             margin="normal"
             InputLabelProps={{
               shrink: true,
+              style: { color: 'white' }
             }}
+            InputProps={{ style: { color: 'white' } }}
           />
-          <Button type="submit" variant="contained" color="primary">
+          <TextField
+            name="description"
+            label="Descrição"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            multiline
+            rows={4}
+            InputLabelProps={{ style: { color: 'white' } }}
+            InputProps={{ style: { color: 'white' } }}
+          />
+          <Button type="submit" variant="contained" color="primary" sx={{ width: '10rem', margin: '1rem auto', display: 'block' }}>
             Cadastrar
           </Button>
         </form>

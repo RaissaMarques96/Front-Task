@@ -6,58 +6,48 @@ import CommentIcon from '@mui/icons-material/Comment';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-export default function TaskCards() {
-  const [completedTasks, setCompletedTasks] = React.useState([]);
-  const [dueDate, setDueDate] = React.useState({
-    1: new Date('2024-08-31'), // Example due dates for tasks
-    2: new Date('2024-09-15'),
-    3: new Date('2024-09-30'),
-  });
+export default function TaskCard() {
+  const [completed, setCompleted] = React.useState(false);
+  const [dueDate] = React.useState(new Date('2024-08-31'));
 
-  const handleDetailsClick = (task) => {
-    // Implement logic to handle details for the task
-    console.log(`Details clicked for Task ${task}`);
+  const handleDetailsClick = () => {
+    console.log('Detalhes clicados');
   };
 
-  const handleCompleteClick = (task) => {
-    // Implement logic to mark the task as completed
-    console.log(`Task ${task} marked as completed`);
-    setCompletedTasks([...completedTasks, task]);
+  const handleCompleteClick = () => {
+    console.log('Tarefa marcada como concluída');
+    setCompleted(true);
   };
 
-  const isTaskCompleted = (task) => {
-    return completedTasks.includes(task);
-  };
-
-  const isTaskOverdue = (task) => {
-    return !isTaskCompleted(task) && dueDate[task] && dueDate[task] < new Date();
+  const isTaskOverdue = () => {
+    return !completed && dueDate < new Date();
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column',marginLeft:'2rem' , marginTop: '5rem' }}>
-      {[1, 2, 3].map((value) => (
-        <Card key={value} style={{ width: '100%', maxWidth: 800, marginBottom: '1rem' }}>
-          <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-            <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
-              Task {value}
-            </Typography>
-            <IconButton aria-label="comment" onClick={() => handleDetailsClick(value)}>
-              <CommentIcon />
-            </IconButton>
-            <Button
-              variant="outlined"
-              onClick={() => handleCompleteClick(value)}
-              style={{
-                backgroundColor: isTaskOverdue(value) ? 'red' : isTaskCompleted(value) ? 'green' : 'blue',
-                color: 'white',
-                marginLeft: 'auto' // Move the button to the right
-              }}
-            >
-              {isTaskCompleted(value) ? 'Completed' : isTaskOverdue(value) ? 'Overdue' : 'Complete'}
-            </Button>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+    <Card style={{ width: '100%', maxWidth: 800, margin: '2rem auto', background: 'linear-gradient(135deg, #3f51b5 0%, #9c27b0 100%)', color: 'white',marginLeft:'2rem' }}>
+      <CardContent style={{ display: 'flex',}}>
+        <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+          Tarefa
+        </Typography>
+        <IconButton aria-label="comment" onClick={handleDetailsClick}>
+          <CommentIcon />
+        </IconButton>
+        <Button
+          variant="outlined"
+          onClick={handleCompleteClick}
+          sx={{
+            background: isTaskOverdue()
+              ? 'red'
+              : completed
+              ? 'linear-gradient(135deg, #4caf50 0%, #2196f3 100%)'
+              : 'linear-gradient(135deg, #3f51b5 0%, #9c27b0 100%)',
+            color: 'white',
+            marginLeft: 'auto'
+          }}
+        >
+          {completed ? 'Finalizada' : isTaskOverdue() ? 'Expirada' : 'Finalizar'}
+        </Button>
+      </CardContent>
+    </Card>
   );
 }

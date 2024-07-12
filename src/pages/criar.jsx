@@ -1,5 +1,9 @@
-import SimplePaper from '../componentes/register'
-function Register() {
+import SimplePaper from "../componentes/criar"
+
+
+
+
+function criar() {
     return (
   
       <div style={{background: 'linear-gradient(135deg, #0D47A1 0%, #000000 100%)',}}>
@@ -10,4 +14,4 @@ function Register() {
     );
   }
   
-  export default Register;
+  export default criar;

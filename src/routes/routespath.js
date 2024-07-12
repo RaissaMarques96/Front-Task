@@ -4,7 +4,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Tarefas from '../pages/Tarefas';
 import usuario from '../pages/usuario';
-
+import criar from '../pages/criar';
 export const RoutesPath = {
   '/': Home,
 '/tarefas': Tarefas,
@@ -12,4 +12,5 @@ export const RoutesPath = {
 '/login': Login,
 '/registrar': Register,
 '/usuario': usuario,
+'/criar':criar,
 };
